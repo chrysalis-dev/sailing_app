@@ -1,4 +1,5 @@
 import 'Race.dart';
+import 'package:intl/intl.dart';
 
 class Competition {
   String name;
@@ -15,6 +16,8 @@ class Competition {
 
 
   String toString() {
-    return "Competion ${this.name} starts on ${this.startDate} and ends on ${this.endDate}. It has ${this.races.length} races";
+    var dateFormatter = new DateFormat('MMMM dd yyyy');
+    var timeFormatter = new DateFormat('H:m');
+    return "Competion ${this.name} starts on ${dateFormatter.format(startDate)} at ${timeFormatter.format(startDate)} and ends on ${dateFormatter.format(endDate)} at ${timeFormatter.format(endDate)}. It has ${this.races.length} races";
   }
 }
