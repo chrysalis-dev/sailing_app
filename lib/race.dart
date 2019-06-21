@@ -1,4 +1,4 @@
-import 'RaceResult.dart';
+import 'race_result.dart';
 
 class Race {
   int raceID;

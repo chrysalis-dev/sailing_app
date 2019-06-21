@@ -1,4 +1,4 @@
-import 'Race.dart';
+import 'race.dart';
 import 'package:intl/intl.dart';
 
 class Competition {

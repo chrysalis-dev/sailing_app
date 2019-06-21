@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'Competition.dart';
+import 'competition.dart';
 
 class MyHomePage extends StatefulWidget {
   final String title;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'Competition.dart';
-import 'MyHomePage.dart';
+import 'competition.dart';
+import 'home_page.dart';
 
 void main() => runApp(MyApp());
 
