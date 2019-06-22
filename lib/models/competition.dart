@@ -1,4 +1,4 @@
-import 'race.dart';
+import 'package:sailing_app/models/race.dart';
 import 'package:intl/intl.dart';
 
 class Competition {

@@ -1,5 +1,5 @@
 name: sailing_app
-description: A new Flutter application.
+description: App that solves problems of running sailing events
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -24,6 +24,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   intl: ^0.15.7
+  datetime_picker_formfield: ^0.2.0
 
 dev_dependencies:
   flutter_test:

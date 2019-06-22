@@ -1,4 +1,4 @@
-import 'race_result.dart';
+import 'package:sailing_app/models/race_result.dart';
 
 class Race {
   int raceID;
