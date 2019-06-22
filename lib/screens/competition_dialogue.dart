@@ -1,6 +1,7 @@
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:sailing_app/data/data.dart';
 
 class CompetitionDialogue extends StatefulWidget {
   final String title;
@@ -26,7 +27,13 @@ class CompetitionDialogueState extends State<CompetitionDialogue> {
       appBar: AppBar(
         title: Text(widget.title),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.save_alt), onPressed: null)
+          IconButton(
+              icon: Icon(Icons.save_alt),
+              onPressed: () {
+                Competitions().addCompetition(
+                    name: 'Test', start: DateTime.now(), end: DateTime.now());
+                Navigator.pop(context);
+              })
         ],
       ),
       body: form(context),
@@ -52,9 +59,9 @@ class CompetitionDialogueState extends State<CompetitionDialogue> {
                     hintText: 'eg. British Open',
                   ),
                   keyboardType: TextInputType.text,
-                  validator: (input) {
-                    if (input.isNotEmpty) {
-                      name = input;
+                  validator: (t) {
+                    if (t.isNotEmpty) {
+                      name = t;
                     }
                   },
                 ),
