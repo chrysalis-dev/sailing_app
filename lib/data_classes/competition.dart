@@ -1,4 +1,4 @@
-import 'Race.dart';
+import 'package:sailing_app/data_classes/race.dart';
 
 class Competition {
   String name;
@@ -6,11 +6,11 @@ class Competition {
   DateTime endDate;
   List<Race> races = new List<Race>();
 
-  Competition(String name, DateTime start, DateTime end) {
-    this.name = name;
-    this.startDate = start;
-    this.endDate = end;
-  }
+  Competition(
+      this.name,
+      this.startDate,
+      this.endDate
+  );
 
 
 
