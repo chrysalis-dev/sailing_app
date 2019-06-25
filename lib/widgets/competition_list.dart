@@ -14,9 +14,7 @@ class CompetitionList extends StatelessWidget {
       itemCount: competitions.length,
       itemBuilder: (context, index) {
         return CompetitionItem(
-          endDate: competitions[index].startDate,
-          startDate: competitions[index].endDate,
-          name: competitions[index].name,
+          competition: competitions[index],
         );
       },
     );

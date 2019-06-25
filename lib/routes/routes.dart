@@ -1,4 +1,0 @@
-class Routes {
-  static final home = "/";
-  static final addCompetition = "/ac";
-}

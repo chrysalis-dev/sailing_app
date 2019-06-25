@@ -10,4 +10,8 @@ class Competitions {
       @required DateTime end}) {
     competitions.add(new Competition(name, start, end));
   }
+
+  void removeCompetition(Competition c) {
+    competitions.remove(c);
+  }
 }

@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:sailing_app/models/competition.dart';
 
 class CompetitionItem extends StatelessWidget {
-  final String name;
-  final DateTime startDate;
-  final DateTime endDate;
+  final Competition competition;
 
   CompetitionItem({
     Key key,
-    @required this.name,
-    @required this.startDate,
-    @required this.endDate,
+    @required this.competition,
   }) : super(key: key);
 
   @override
@@ -17,8 +14,8 @@ class CompetitionItem extends StatelessWidget {
     return Card(
       child: ListTile(
         leading: Icon(Icons.directions_boat, size: 56),
-        title: Text(name),
-        subtitle: Text('Do the date displaying\nOn two lines'),
+        title: Text(competition.name),
+        subtitle: Text(competition.toString()),
         trailing: Icon(Icons.more_vert),
       ),
     );
