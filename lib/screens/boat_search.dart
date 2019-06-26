@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:sailing_app/data_classes/boat.dart';
-import 'dart:math';
-import 'package:sailing_app/data_classes/race_result.dart';
 import 'package:sailing_app/data_classes/competitor.dart';
 import 'package:sailing_app/widgets/suggestions_dropdown.dart';
 import '../widgets/search_type_buttons.dart';
 import '../widgets/search_bar.dart';
+import '../data_classes/search_screen_arguments.dart';
 
 String searchType = ""; // current search mode (middle/start/end)
 String inputString = ""; // string to hold and read input value from
 List<bool> buttonStatuses = [true, false, false]; // button statuses (TRUE -> active)
 
-
 // the main Widget in this view is stateful
 class SearchBarWithSuggestions extends StatefulWidget {
-  final List<Competitor> competitors = []; //immutable: list of competitors
-
+  final List<Competitor> competitors; //immutable: list of competitors
+  static final routeName = 'searchPage';
+  final DateTime startTime;
+  final int numOfLaps;
 
   // setters and getters for input string, search type and button statuses:
   String getSearchType() {return searchType;}
@@ -25,17 +24,11 @@ class SearchBarWithSuggestions extends StatefulWidget {
   List<bool> getButtonStatuses() { return buttonStatuses; }
   void setButtonStatuses(List<bool> l) { buttonStatuses = l; }
 
-  // constructor: takes number of competitors and creates that many random boats
-  SearchBarWithSuggestions(int n) {
-    var random = new Random();
-    for(var i = 0; i < n; i++) {
-      var n = random.nextInt(100000);
-      competitors.add(Competitor(
-          boat: Boat(n, "", "", 0, ""),
-          result: RaceResult(n, 0, 0, 0, 0, 0, "")
-      ));
-    }
-  }
+    // constructor: takes number of competitors and creates that many random boats
+  SearchBarWithSuggestions(SearchScreenArguments args) :
+        this.startTime = args.t,
+        this.competitors = args.c,
+        this.numOfLaps = args.l;
 
   _SearchState createState() => _SearchState();
 }
@@ -58,12 +51,26 @@ class _SearchState extends State<SearchBarWithSuggestions> {
   // build method to create a search bar with suggestions
   @override
   build(BuildContext context) {
-    return new Column(
-      children: <Widget> [
-        SearchTypeButtons(widget, updateParent: refresh),
-        SearchBar(widget, updateParent: refresh,),
-        SuggestionsDropdown(widget, widget.competitors),
-    ],
+    return new  Material(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("searching for boats..."),
+          actions: <Widget>[
+            Container(
+              height: 50,
+              width: 50,
+              child: Icon(Icons.done_all),
+            )
+          ],
+        ),
+        body: Column(
+          children: <Widget> [
+            SearchTypeButtons(widget, updateParent: refresh),
+            SearchBar(widget, updateParent: refresh,),
+            SuggestionsDropdown(widget, widget.competitors, widget.startTime, widget.numOfLaps),
+          ],
+        ),
+      ),
     );
   }
 }

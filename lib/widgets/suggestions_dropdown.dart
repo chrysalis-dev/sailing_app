@@ -7,9 +7,11 @@ class SuggestionsDropdown extends StatefulWidget {
   // immutable values - parent widget and callback list of competitors
   final SearchBarWithSuggestions parent;
   final List<Competitor> competitors;
+  final DateTime startTime;
+  final int numOfLaps;
 
-  // the constructor takes the parent widget and list of competitors
-  SuggestionsDropdown(this.parent, this.competitors);
+  // the constructor takes the parent widget, list of competitors and start time
+  SuggestionsDropdown(this.parent, this.competitors, this.startTime, this.numOfLaps);
 
   _SuggState createState() => _SuggState();
 }
@@ -55,18 +57,70 @@ class _SuggState extends State<SuggestionsDropdown> {
     if (suggCompetitors != null) {
       suggCompetitors.sort();
       for (Competitor c in suggCompetitors) {
-        suggWidgets.add(
-            SizedBox(
-              child: Card(
-                child: ListTile(
-                  leading: Text("Laps: 1"),
-                  title: Text(c.boat.boatID.toString()),
-                  trailing: Icon(Icons.check),
+        if (c.lapCount < widget.numOfLaps) {
+          suggWidgets.add(
+              SizedBox(
+                child: Card(
+                  child: ListTile(
+                    leading: Text(
+                        (c.lapCount == 0)
+                            ? "No laps"
+                            : "Laps: " + (c.lapCount).toString()
+                    ),
+                    title: Text(c.boat.boatID.toString() + (
+                        (c.lapCount == 0)
+                          ? ""
+                          : "\nLast lap - " + c.printLastLap())
+                    ),
+                    trailing: RawMaterialButton(
+                      shape: CircleBorder(),
+                      elevation: 2,
+                      fillColor: Colors.lightGreen[
+                        (c.lapCount == (widget.numOfLaps - 1))
+                            ? 400
+                            : 200
+                      ],
+                      constraints: BoxConstraints(
+                        maxHeight: 50,
+                        maxWidth: 50,
+                        minHeight: 50,
+                        minWidth: 50
+                      ),
+                      onPressed: () {
+                        (c.lapCount == 0)
+                            ? c.registerLap(DateTime.now(), widget.startTime)
+                            : c.registerLap(DateTime.now(), c.lastLapTime);
+                        setState(() {});
+                      },
+                      child: Text(
+                          (c.lapCount == (widget.numOfLaps - 1))
+                              ? "END"
+                              : "LAP"/*Icon(Icons.check)*/
+                      ),
+                     ),
+                  ),
+                  color: Colors.white70,
                 ),
-                color: Colors.white70,
-              ),
-            )
-        );}}
+              )
+          );
+        }
+        else {
+          suggWidgets.add(
+              SizedBox(
+                child: Card(
+                  child: ListTile(
+                    leading: Text("DONE"),
+                    title: Text(
+                        c.boat.boatID.toString(),
+                        style: TextStyle(color: Colors.red[400])
+                    ),
+                  ),
+                  color: Colors.white70,
+                ),
+              )
+          );
+        }
+      }}
   }
 
   // build method determines widget's GUI representation
