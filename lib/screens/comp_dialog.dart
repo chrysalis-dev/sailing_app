@@ -25,10 +25,14 @@ class _CompDialogState extends State<CompDialog> {
           IconButton(
             icon: Icon(Icons.save_alt),
             onPressed: () {
-              Navigator.pop(
-                  context,
-                  new Competition(
-                      _competitionName, _fromDateTime, _toDateTime));
+              if (_hasName) {
+                Navigator.pop(
+                    context,
+                    new Competition(
+                        _competitionName, _fromDateTime, _toDateTime));
+              } else {
+                Navigator.pop(context);
+              }
             },
           )
         ],

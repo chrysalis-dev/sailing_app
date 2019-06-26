@@ -20,19 +20,18 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:
-          CompetitionList(competitions: Competitions.competitions), // ADD BODY
+      body: CompetitionList(competitions: Competitions.competitions),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _fml(context);
-        }, // ADD ASYNC METHOD
+        },
         tooltip: 'Add Competition',
         child: Icon(Icons.add),
       ),
     );
   }
 
-  void _fml(BuildContext context) async {
+  Future _fml(BuildContext context) async {
     final result = await Navigator.push(
         context,
         MaterialPageRoute(
