@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sailing_app/models/competition.dart';
+import 'package:sailing_app/models/Competition.dart';
+import 'package:sailing_app/screens/competition_screen.dart';
 
 class CompetitionItem extends StatelessWidget {
   final Competition competition;
@@ -11,13 +12,22 @@ class CompetitionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        leading: Icon(Icons.directions_boat, size: 56),
-        title: Text(competition.name),
-        subtitle: Text(competition.toString()),
-        trailing: Icon(Icons.more_vert),
+    return GestureDetector(
+      child: Card(
+        child: ListTile(
+          leading: Icon(Icons.directions_boat, size: 56),
+          title: Text(competition.name),
+          subtitle: Text(competition.toString()),
+          trailing: Icon(Icons.more_vert),
+        ),
       ),
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    CompetitionScreen(competition: competition)));
+      },
     );
   }
 }
