@@ -3,6 +3,7 @@ import 'package:sailing_app/models/Competition.dart';
 
 class Competitions {
   static List<Competition> competitions = [];
+  static bool dark = true;
 
   void addCompetition(
       {@required String name,
