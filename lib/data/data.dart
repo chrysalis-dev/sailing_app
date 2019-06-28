@@ -15,4 +15,8 @@ class Competitions {
   void removeCompetition(Competition c) {
     competitions.remove(c);
   }
+
+  void removeRace(Competition c) {
+    c.races.removeLast();
+  }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sailing_app/models/Competition.dart';
+import 'package:sailing_app/models/Race.dart';
 import 'package:sailing_app/widgets/dti.dart';
+import 'package:sailing_app/widgets/race_list.dart';
 
 class CompIt extends StatefulWidget {
   final Competition competition;
@@ -106,6 +108,18 @@ class _CompItState extends State<CompIt> {
                 color: Colors.black,
               ),
             ),
+            Expanded(
+                child: RaceList(
+              competition: widget.competition,
+            )),
+            FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () {
+                setState(() {
+                  widget.competition.races.add(new Race(DateTime.now()));
+                });
+              },
+            )
           ],
         ),
       ),
