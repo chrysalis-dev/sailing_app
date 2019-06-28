@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:sailing_app/models/Competition.dart';
 import 'package:sailing_app/widgets/dti.dart';
 
-class CompIt extends StatelessWidget {
+class CompIt extends StatefulWidget {
   final Competition competition;
 
   CompIt({Key key, @required this.competition}) : super(key: key);
+
+  @override
+  _CompItState createState() => _CompItState();
+}
+
+class _CompItState extends State<CompIt> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -41,8 +47,10 @@ class CompIt extends StatelessWidget {
                 decoration: const InputDecoration(
                     labelText: 'Competition name', filled: true),
                 onChanged: (String value) {
-                  competition.name =
-                      value.isNotEmpty ? value : competition.name;
+                  setState(() {
+                    widget.competition.name =
+                        value.isNotEmpty ? value : widget.competition.name;
+                  });
                 },
               ),
             ),
@@ -60,9 +68,11 @@ class CompIt extends StatelessWidget {
                 ),
               ),
               title: DateTimeItem(
-                dateTime: competition.startDate,
+                dateTime: widget.competition.startDate,
                 onChanged: (DateTime value) {
-                  competition.startDate = value;
+                  setState(() {
+                    widget.competition.startDate = value;
+                  });
                 },
               ),
             ),
@@ -80,9 +90,11 @@ class CompIt extends StatelessWidget {
                 ),
               ),
               title: DateTimeItem(
-                dateTime: competition.endDate,
+                dateTime: widget.competition.endDate,
                 onChanged: (DateTime value) {
-                  competition.endDate = value;
+                  setState(() {
+                    widget.competition.endDate = value;
+                  });
                 },
               ),
             ),
