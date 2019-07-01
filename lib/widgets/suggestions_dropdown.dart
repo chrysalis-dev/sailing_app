@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sailing_app/data_classes/competitor.dart';
+import '../models/competitor.dart';
 import 'package:sailing_app/screens/boat_search.dart';
 
 // SuggestionsDropdown class is stateful
@@ -7,11 +7,9 @@ class SuggestionsDropdown extends StatefulWidget {
   // immutable values - parent widget and callback list of competitors
   final SearchBarWithSuggestions parent;
   final List<Competitor> competitors;
-  final DateTime startTime;
-  final int numOfLaps;
 
   // the constructor takes the parent widget, list of competitors and start time
-  SuggestionsDropdown(this.parent, this.competitors, this.startTime, this.numOfLaps);
+  SuggestionsDropdown(this.parent, this.competitors);
 
   _SuggState createState() => _SuggState();
 }
@@ -33,7 +31,7 @@ class _SuggState extends State<SuggestionsDropdown> {
         case "start": {
           pattern = RegExp('^' + widget.parent.getInputString());
         } break;
-        case "middle": {
+        case "contains": {
           pattern = RegExp(widget.parent.getInputString());
         } break;
         case "end": {
@@ -50,6 +48,127 @@ class _SuggState extends State<SuggestionsDropdown> {
     } on Exception catch(e) { debugPrint(e.toString()); } // output any errors
   }
 
+  // card for boats in a non-final lap
+  Widget normalCard(Competitor c) {
+    return SizedBox(
+      child: Card(
+        child: ListTile(
+          leading: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text("Boat number"),
+              Container(height: 50, child: VerticalDivider(),),
+            ],
+          ) ,
+          title: Text(c.boat.boatID.toString()),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Container(height: 50, child: VerticalDivider(),),
+              RawMaterialButton(
+                shape: CircleBorder(),
+                elevation: 2,
+                fillColor: Colors.lightGreen[200],
+                constraints: BoxConstraints(
+                    maxHeight: 50,
+                    maxWidth: 50,
+                    minHeight: 50,
+                    minWidth: 50
+                ),
+                onPressed: () {
+                  c.registerLap(DateTime.now());
+                  setState(() {});
+                },
+                child: Text("LAP " + (c.results.laps + 1).toString()),
+              ),
+            ],
+          )
+        ),
+        color: Colors.white70,
+      ),
+    );
+  }
+
+  // card for boats in the final lap
+  Widget finalCard(Competitor c) {
+    return SizedBox(
+      child: Card(
+        child: ListTile(
+          leading: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text("Boat number "),
+              Container(height: 50, child: VerticalDivider(),),
+            ],
+          ) ,
+          title: Text(c.boat.boatID.toString()),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Container(height: 50, child: VerticalDivider(),),
+              RawMaterialButton(
+                shape: CircleBorder(),
+                elevation: 2,
+                fillColor: Colors.lightGreen[400],
+                constraints: BoxConstraints(
+                    maxHeight: 50,
+                    maxWidth: 50,
+                    minHeight: 50,
+                    minWidth: 50
+                ),
+                onPressed: () {
+                  c.registerLap(DateTime.now());
+                  c.hasFinished();
+                  setState(() {});
+                },
+                child: Text("END"),
+              ),
+
+            ],
+          )
+        ),
+        color: Colors.white70,
+      ),
+    );
+  }
+
+  // card for boats which have finished the race
+  Widget finishedCard (Competitor c) {
+    return SizedBox(
+      child: Card(
+        child: ListTile(
+          leading: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text("Boat number "),
+              Container(height: 50, child: VerticalDivider(),),
+              ],),
+          title: Text(c.boat.boatID.toString()),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Container(height: 50, child: VerticalDivider(),),
+              RawMaterialButton(
+                shape: CircleBorder(),
+                fillColor: Colors.black26,
+                constraints: BoxConstraints(
+                    maxHeight: 50,
+                    maxWidth: 50,
+                    minHeight: 50,
+                    minWidth: 50
+                ),
+                onPressed: null,
+                child: Text("DONE"),
+              ),
+
+            ],
+          )
+        ),
+        color: Colors.white30,
+      ),
+    );
+  }
+
   // method to create the list of suggestion widgets from the input and list
   drawSuggestions() {
     suggWidgets = [];
@@ -57,75 +176,17 @@ class _SuggState extends State<SuggestionsDropdown> {
     if (suggCompetitors != null) {
       suggCompetitors.sort();
       for (Competitor c in suggCompetitors) {
-        if (c.lapCount < widget.numOfLaps) {
-          suggWidgets.add(
-              SizedBox(
-                child: Card(
-                  child: ListTile(
-                    leading: Text(
-                        (c.lapCount == 0)
-                            ? "No laps"
-                            : "Laps: " + (c.lapCount).toString()
-                    ),
-                    title: Text(c.boat.boatID.toString() + (
-                        (c.lapCount == 0)
-                          ? ""
-                          : "\nLast lap - " + c.printLastLap())
-                    ),
-                    trailing: RawMaterialButton(
-                      shape: CircleBorder(),
-                      elevation: 2,
-                      fillColor: Colors.lightGreen[
-                        (c.lapCount == (widget.numOfLaps - 1))
-                            ? 400
-                            : 200
-                      ],
-                      constraints: BoxConstraints(
-                        maxHeight: 50,
-                        maxWidth: 50,
-                        minHeight: 50,
-                        minWidth: 50
-                      ),
-                      onPressed: () {
-                        (c.lapCount == 0)
-                            ? c.registerLap(DateTime.now(), widget.startTime)
-                            : c.registerLap(DateTime.now(), c.lastLapTime);
-                        setState(() {});
-                      },
-                      child: Text(
-                          (c.lapCount == (widget.numOfLaps - 1))
-                              ? "END"
-                              : "LAP"/*Icon(Icons.check)*/
-                      ),
-                     ),
-                  ),
-                  color: Colors.white70,
-                ),
-              )
-          );
+        if (!widget.parent.checkFinalLap()) { suggWidgets.add(normalCard(c)); }
+        else if (c.checkFinished()) { suggWidgets.add(finishedCard(c)); }
+        else { suggWidgets.add(finalCard(c)); }
         }
-        else {
-          suggWidgets.add(
-              SizedBox(
-                child: Card(
-                  child: ListTile(
-                    leading: Text("DONE"),
-                    title: Text(
-                        c.boat.boatID.toString(),
-                        style: TextStyle(color: Colors.red[400])
-                    ),
-                  ),
-                  color: Colors.white70,
-                ),
-              )
-          );
-        }
-      }}
-  }
+      }
+    }
 
   // build method determines widget's GUI representation
   @override
   Widget build(BuildContext context) {
+    debugPrint("just drew suggestions drawer");
     updateSuggestions();
     drawSuggestions();
 

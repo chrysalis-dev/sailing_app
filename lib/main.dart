@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sailing_app/screens/boat_search.dart';
 import 'screens/start_page.dart';
-import 'data_classes/search_screen_arguments.dart';
+import 'screens/loading_screen.dart';
+import 'models/competitor.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,10 +17,11 @@ class MyApp extends StatelessWidget{
       home: StartPage(),
       routes: <String, WidgetBuilder> {
         'startPage': (BuildContext context) => new StartPage(),
+        'loadingPage': (BuildContext context) => new LoadingScreen(),
       },
       onGenerateRoute: (RouteSettings settings) {
         if (settings.name == SearchBarWithSuggestions.routeName) {
-          final SearchScreenArguments args = settings.arguments;
+          final List<Competitor> args = settings.arguments;
           return MaterialPageRoute(
             builder: (context) {
               return SearchBarWithSuggestions(args); }

@@ -1,0 +1,137 @@
+{
+  "data": [{
+    "competition_name": {
+      "boats": [{
+        "Class": "Boat Type #1",
+        "CrewName": "Wonderland",
+        "HelmName": "Alice",
+        "PY": 0,
+        "SailNo": 1
+      }, {
+        "Class": "Boat Type #2",
+        "CrewName": "Builder",
+        "HelmName": "Bob",
+        "PY": 0,
+        "SailNo": 2
+      }, {
+        "Class": "Boat Type #3",
+        "CrewName": "Web",
+        "HelmName": "Charlotte",
+        "PY": 0,
+        "SailNo": 3
+      }, {
+        "Class": "Boat Type #4",
+        "CrewName": "Inferno",
+        "HelmName": "Dante",
+        "PY": 0,
+        "SailNo": 4
+      }],
+      "endDate": "2000-07-20 20:19",
+      "races": [{
+        "id": "0",
+        "raceDate": "2000-07-20",
+        "cancelled": 0,
+        "results": [{
+          "correctedTime": 0,
+          "elapsedTime": 0,
+          "id": 4,
+          "laps": 1,
+          "mention": "none",
+          "points": 0,
+          "rank": 1
+        }, {
+          "correctedTime": 0,
+          "elapsedTime": 0,
+          "id": 1,
+          "laps": 1,
+          "mention": "none",
+          "points": 0,
+          "rank": 2
+        }, {
+          "correctedTime": 0,
+          "elapsedTime": 0,
+          "id": 2,
+          "laps": 1,
+          "mention": "none",
+          "points": 0,
+          "rank": 3
+        }, {
+          "correctedTime": 0,
+          "elapsedTime": 0,
+          "id": 3,
+          "laps": 1,
+          "mention": "none",
+          "points": 0,
+          "rank": 4
+        }]
+      }, {
+        "id": "1",
+        "raceDate": "2000-07-20",
+        "cancelled": 0,
+        "results": [{
+          "correctedTime": 0,
+          "elapsedTime": 0,
+          "id": 4,
+          "laps": 1,
+          "mention": "none",
+          "points": 0,
+          "rank": 4
+        }, {
+          "correctedTime": 0,
+          "elapsedTime": 0,
+          "id": 1,
+          "laps": 1,
+          "mention": "none",
+          "points": 0,
+          "rank": 3
+        }, {
+          "correctedTime": 0,
+          "elapsedTime": 0,
+          "id": 2,
+          "laps": 1,
+          "mention": "none",
+          "points": 0,
+          "rank": 2
+        }, {
+          "correctedTime": 0,
+          "elapsedTime": 0,
+          "id": 3,
+          "laps": 1,
+          "mention": "none",
+          "points": 0,
+          "rank": 1
+        }]
+      }, {
+        "id": "2",
+        "raceDate": "2000-07-20",
+        "cancelled": 1
+      }],
+      "standings": [{
+        "id": 1,
+        "nett": 0,
+        "rank": 1,
+        "total": 0
+      }, {
+        "id": 2,
+        "nett": 0,
+        "rank": 1,
+        "total": 0
+      }, {
+        "id": 3,
+        "nett": 0,
+        "rank": 1,
+        "total": 0
+      }, {
+        "id": 4,
+        "nett": 0,
+        "rank": 1,
+        "total": 0
+      }],
+      "startDate": "2000-07-20 20:18"
+    }
+  }, {
+    "name": {
+      "boats": [0]
+    }
+  }]
+}
