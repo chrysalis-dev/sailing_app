@@ -23,9 +23,9 @@ class _SearchTypeState extends State<SearchTypeButtons> {
     int mode = c % 3;
     String type;
     switch(mode) {
-      case 0: type = "Contains"; break;
-      case 1: type = "Begins with"; break;
-      case 2: type = "Ends in"; break;
+      case 0: type = "CONTAINS"; break;
+      case 1: type = "BEGINS WITH"; break;
+      case 2: type = "ENDS IN"; break;
     }
 
     switch(mode) {
@@ -40,32 +40,43 @@ class _SearchTypeState extends State<SearchTypeButtons> {
         break;
     }
 
-    return RaisedButton(
-        child: Text("Search type:\n" + type, style: TextStyle(color: Colors.white),),
-        // set colour based on current status for this button
-        color: Colors.blue,
-        // on button press, set search type and button status, then
-        // tell parent to refresh itself
-        onPressed: () {
-          this.clickCount++;
-          widget.updateParent();
-        }
+    return Column (
+      children: <Widget> [
+        Text("Search type:"),
+        RaisedButton(
+          child: Text(type, style: TextStyle(color: Colors.white),),
+          // set colour based on current status for this button
+          color: Colors.blue,
+          // on button press, set search type and button status, then
+          // tell parent to refresh itself
+          onPressed: () {
+            this.clickCount++;
+            widget.updateParent();
+          },
+        )
+      ],
     );
   }
 
   // function to build button which sets final lap
   Widget finalLapButton() {
-    return RaisedButton(
-      child: Text("FINAL LAP"),
-      color:
-      (widget.parent.checkFinalLap())
-          ? Colors.blue
-          : null,
-      onPressed: () {
-        widget.parent.setFinalLap(true);
-        widget.updateParent();
-      },
-    );
+    return Column(
+      children: <Widget>[
+        Text(""),
+        RaisedButton(
+          child: Text("FINAL LAP"),
+          color:
+          (widget.parent.checkFinalLap())
+              ? Colors.blue
+              : null,
+          onPressed: () {
+            widget.parent.setFinalLap(true);
+            widget.updateParent();
+          },
+        )
+      ],
+    )
+;
   }
 
   // build method defines how widget is represented in GUI

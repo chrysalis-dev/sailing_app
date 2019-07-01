@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sailing_app/screens/boat_search.dart';
-import 'screens/start_page.dart';
-import 'screens/loading_screen.dart';
+import 'screens/help_page.dart';
+import 'package:sailing_app/widgets/processing_alert.dart';
 import 'models/competitor.dart';
 
 void main() => runApp(MyApp());
@@ -14,10 +14,9 @@ class MyApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       title: "textbox using inbuilt keyboard",
       // Scaffold lets us use AppBar at top, floating buttons and bottom bar
-      home: StartPage(),
+      home: HelpPage(true),
       routes: <String, WidgetBuilder> {
-        'startPage': (BuildContext context) => new StartPage(),
-        'loadingPage': (BuildContext context) => new LoadingScreen(),
+        'helpPage': (BuildContext context) => new HelpPage(false),
       },
       onGenerateRoute: (RouteSettings settings) {
         if (settings.name == SearchBarWithSuggestions.routeName) {

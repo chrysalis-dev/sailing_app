@@ -9,16 +9,8 @@ class RaceResult {
   int points;
   String specialMentions;
 
-  RaceResult(int id, int rank, int elapsed, int laps, int corrected, int points,
-      String mentions) {
-    this.boatID = id;
-    this.rank = rank;
-    this.elapsedTime = elapsed;
-    this.laps = laps;
-    this.correctedTime = corrected;
-    this.points = points;
-    this.specialMentions = mentions;
-  }
+  RaceResult(this.boatID, this.rank, this.elapsedTime, this.laps,
+      this.correctedTime, this.points, this.specialMentions) ;
 
   factory RaceResult.fromDbObject(DbRaceResult race) {
     return RaceResult(race.id, race.rank, race.elapsedTime, race.laps,

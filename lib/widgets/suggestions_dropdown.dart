@@ -56,7 +56,7 @@ class _SuggState extends State<SuggestionsDropdown> {
           leading: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text("Boat number"),
+              Text("Boat number:"),
               Container(height: 50, child: VerticalDivider(),),
             ],
           ) ,
@@ -97,7 +97,7 @@ class _SuggState extends State<SuggestionsDropdown> {
           leading: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text("Boat number "),
+              Text("Boat number:"),
               Container(height: 50, child: VerticalDivider(),),
             ],
           ) ,
@@ -140,7 +140,7 @@ class _SuggState extends State<SuggestionsDropdown> {
           leading: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text("Boat number "),
+              Text("Boat number:"),
               Container(height: 50, child: VerticalDivider(),),
               ],),
           title: Text(c.boat.boatID.toString()),
@@ -199,7 +199,8 @@ class _SuggState extends State<SuggestionsDropdown> {
           bottom: 20,
         ),
         /* ListView.builder only renders on-screen elements while ListView
-            alone doesn't. More efficient this way, especially for large lists*/
+            renders all of them. More efficient this way, especially for large
+            lists */
         child: ListView.builder(
           shrinkWrap: true,
           itemCount: suggWidgets.length,

@@ -7,13 +7,7 @@ class Boat {
   int py;
   String boatClass;
 
-  Boat(int id, String helmName, String crewName, int py, String boatClass) {
-    this.boatID = id;
-    this.boatClass = boatClass;
-    this.helmName = helmName;
-    this.crewName = crewName;
-    this.py = py;
-  }
+  Boat(this.boatID, this.helmName, this.crewName, this.py, this.boatClass) ;
 
   factory Boat.fromDbObject(DbBoat boat) {
     return Boat(

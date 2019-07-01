@@ -1,7 +1,7 @@
 /*
   NOTE: consider renaming to Racer instead, since there is a unique Competitor
-  for each race in a competition. As of writing there is no Race class, so
-  for now this is fine. May need to change later on.
+  object for each race in a competition. As of writing the Race class isn't used
+  so for now this is fine. Will probably need to change later on.
 */
 
 import 'race_result.dart';
@@ -12,7 +12,6 @@ class Competitor implements Comparable<Competitor>{
   Boat boat;
   RaceResult results;
   DateTime startTime;
-  List<Duration> lapData = [null];
   bool finished = false;
 
   Competitor({@required this.boat, @required this.results, @required this.startTime}) { results.laps = 0; }

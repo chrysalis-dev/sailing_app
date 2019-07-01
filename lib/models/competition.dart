@@ -8,11 +8,7 @@ class Competition {
   DateTime endDate;
   List<Race> races = new List<Race>();
 
-  Competition(String name, DateTime start, DateTime end) {
-    this.name = name;
-    this.startDate = start;
-    this.endDate = end;
-  }
+  Competition(this.name, this.startDate, this.endDate) ;
 
   factory Competition.fromDbObject(DbCompetition competition) {
     return Competition(

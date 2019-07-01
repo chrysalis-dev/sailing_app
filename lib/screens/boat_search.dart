@@ -3,6 +3,7 @@ import '../models/competitor.dart';
 import 'package:sailing_app/widgets/suggestions_dropdown.dart';
 import '../widgets/search_type_buttons.dart';
 import '../widgets/search_bar.dart';
+import '../widgets/processing_alert.dart';
 
 String searchType = ""; // current search mode (contains/start/end)
 String inputString = ""; // string to hold and read input value from
@@ -47,8 +48,13 @@ build(BuildContext context) {
     return new  Material(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("searching for boats..."),
+          title: Text("Smooth Sailing"),
           actions: <Widget>[
+            RawMaterialButton(
+              elevation: 1,
+              child: Text("HELP", style: TextStyle(color: Colors.white),),
+              onPressed: () { Navigator.of(context).pushNamed('helpPage'); }, // onPressed
+            ),
             Container(
               height: 50,
               width: 50,
@@ -59,17 +65,11 @@ build(BuildContext context) {
                 onPressed: () { showDialog(
                   context: context,
                   builder: (_) => AlertDialog(
-                    content: Row(
-                      children: <Widget>[
-                        CircularProgressIndicator(backgroundColor: Colors.orange,),
-                        Padding(padding: EdgeInsets.only(right: 10),),
-                        Text("Calculating race results...")
-                      ],
-                    ),
+                    content: ProcessingAlert(),
                   ),
-                );},
+                );}, // onPressed
               ),
-            )
+            ),
           ],
         ),
         body: Column(
