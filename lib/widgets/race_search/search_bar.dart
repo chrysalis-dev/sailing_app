@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/boat_search.dart';
+import '../../screens/boat_search.dart';
 
 // SearchBar stateful class
 class SearchBar extends StatefulWidget {
@@ -26,7 +26,7 @@ class _SearchBarState extends State<SearchBar> {
 
   // overridden initState sets up listener for controller and its behaviour
   @override
-  void initState(){
+  void initState() {
     inputController.addListener(() {
       widget.parent.setInputString(inputController.text);
       widget.updateParent();
@@ -37,7 +37,8 @@ class _SearchBarState extends State<SearchBar> {
   // method for building the widget itself in GUI
   @override
   Widget build(BuildContext context) {
-    return Container ( // all wrapped in a container for size control ability
+    return Container(
+        // all wrapped in a container for size control ability
         padding: const EdgeInsets.only(
           top: 10,
           bottom: 0,
@@ -46,30 +47,30 @@ class _SearchBarState extends State<SearchBar> {
         ),
         child: new Container(
             child: new Center(
-              // Column consists of "search type" title and the bar itself
-              child: new Column(
-                  children : [
-                    new Text('Enter boat number:',
-                      style: new TextStyle(color: Colors.blue, fontSize: 20.0),
-                    ),
-                    new TextFormField(
-                      // link controller to this input box
-                      autovalidate: true,
-                      validator: (text) {
-                        // if the input is non-empty and can't be parsed as an int, it's invalid
-                        if ((int.tryParse(text) == null || int.tryParse(text) < 0) && text != "") {
-                          return "Positive integers only";
-                        }
-                        else {
-                          return null;
-                        }
-                      },
-                      controller: inputController,
-                      autofocus: true,
-                      // try to call user keyboard in NUMBER mode by default
-                      keyboardType: TextInputType.number,
-                    ),
-                  ]),)));
+          // Column consists of "search type" title and the bar itself
+          child: new Column(children: [
+            new Text(
+              'Enter boat number:',
+              style: new TextStyle(color: Colors.blue, fontSize: 20.0),
+            ),
+            new TextFormField(
+              // link controller to this input box
+              autovalidate: true,
+              validator: (text) {
+                // if the input is non-empty and can't be parsed as an int, it's invalid
+                if ((int.tryParse(text) == null || int.tryParse(text) < 0) &&
+                    text != "") {
+                  return "Positive integers only";
+                } else {
+                  return null;
+                }
+              },
+              controller: inputController,
+              autofocus: true,
+              // try to call user keyboard in NUMBER mode by default
+              keyboardType: TextInputType.number,
+            ),
+          ]),
+        )));
   }
-
 }

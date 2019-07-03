@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/boat_search.dart';
+import '../../screens/boat_search.dart';
 
 // SearchTypeButtons class is stateful
 class SearchTypeButtons extends StatefulWidget {
@@ -22,13 +22,19 @@ class _SearchTypeState extends State<SearchTypeButtons> {
     // get button statuses from parent - we'll need them to colour buttons
     int mode = c % 3;
     String type;
-    switch(mode) {
-      case 0: type = "CONTAINS"; break;
-      case 1: type = "BEGINS WITH"; break;
-      case 2: type = "ENDS IN"; break;
+    switch (mode) {
+      case 0:
+        type = "CONTAINS";
+        break;
+      case 1:
+        type = "BEGINS WITH";
+        break;
+      case 2:
+        type = "ENDS IN";
+        break;
     }
 
-    switch(mode) {
+    switch (mode) {
       case 0:
         widget.parent.setSearchType("contains");
         break;
@@ -40,11 +46,14 @@ class _SearchTypeState extends State<SearchTypeButtons> {
         break;
     }
 
-    return Column (
-      children: <Widget> [
+    return Column(
+      children: <Widget>[
         Text("Search type:"),
         RaisedButton(
-          child: Text(type, style: TextStyle(color: Colors.white),),
+          child: Text(
+            type,
+            style: TextStyle(color: Colors.white),
+          ),
           // set colour based on current status for this button
           color: Colors.blue,
           // on button press, set search type and button status, then
@@ -65,32 +74,25 @@ class _SearchTypeState extends State<SearchTypeButtons> {
         Text(""),
         RaisedButton(
           child: Text("FINAL LAP"),
-          color:
-          (widget.parent.checkFinalLap())
-              ? Colors.blue
-              : null,
+          color: (widget.parent.checkFinalLap()) ? Colors.blue : null,
           onPressed: () {
             widget.parent.setFinalLap(true);
             widget.updateParent();
           },
         )
       ],
-    )
-;
+    );
   }
 
   // build method defines how widget is represented in GUI
   @override
   Widget build(BuildContext context) {
-    return Container( // wrap in container for sizing purposes
-      padding: EdgeInsets.all(0),
-      child: ButtonBar(
-        alignment: MainAxisAlignment.center,
-        children: <Widget>[
-          typeButton(clickCount),
-          finalLapButton()
-        ],
-      )
-    );
+    return Container(
+        // wrap in container for sizing purposes
+        padding: EdgeInsets.all(0),
+        child: ButtonBar(
+          alignment: MainAxisAlignment.center,
+          children: <Widget>[typeButton(clickCount), finalLapButton()],
+        ));
   }
 }
