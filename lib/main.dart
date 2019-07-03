@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sailing_app/screens/boat_search.dart';
 import 'screens/help_page.dart';
-import 'package:sailing_app/widgets/processing_alert.dart';
 import 'models/competitor.dart';
 
 void main() => runApp(MyApp());
