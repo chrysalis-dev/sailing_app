@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sailing_app/models/Competition.dart';
-import 'package:sailing_app/widgets/competition_expanded.dart';
+import 'package:sailing_app/widgets/albert_temp_folder/competition_expanded.dart';
 
 class CompetitionScreen extends StatefulWidget {
   final Competition competition;

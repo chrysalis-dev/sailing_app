@@ -3,7 +3,7 @@ import '../models/competitor.dart';
 import 'package:sailing_app/widgets/race_search/suggestions_dropdown.dart';
 import '../widgets/race_search/search_type_buttons.dart';
 import '../widgets/race_search/search_bar.dart';
-import '../widgets/processing_alert.dart';
+import '../widgets/albert_temp_folder/processing_alert.dart';
 
 String searchType = ""; // current search mode (contains/start/end)
 String inputString = ""; // string to hold and read input value from

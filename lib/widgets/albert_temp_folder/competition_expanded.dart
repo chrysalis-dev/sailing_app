@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sailing_app/models/Competition.dart';
 import 'package:sailing_app/models/Race.dart';
-import 'package:sailing_app/widgets/dti.dart';
-import 'package:sailing_app/widgets/race_list.dart';
+import 'package:sailing_app/widgets/albert_temp_folder/dti.dart';
+import 'package:sailing_app/widgets/albert_temp_folder/race_list.dart';
 
 class CompIt extends StatefulWidget {
   final Competition competition;

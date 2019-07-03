@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sailing_app/models/Competition.dart';
-import 'package:sailing_app/widgets/race_item.dart';
+import 'package:sailing_app/widgets/albert_temp_folder/race_item.dart';
 
 class RaceList extends StatelessWidget {
   final Competition competition;

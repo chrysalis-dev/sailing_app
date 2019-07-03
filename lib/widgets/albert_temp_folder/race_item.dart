@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sailing_app/models/Competition.dart';
-import '../screens/help_page.dart';
+import '../../screens/help_page.dart';
 
 class RaceItem extends StatelessWidget {
   final int index;
