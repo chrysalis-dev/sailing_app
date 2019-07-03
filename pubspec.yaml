@@ -1,5 +1,5 @@
 name: sailing_app
-description: A new Flutter application.
+description: App that solves problems of running sailing events
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -41,6 +41,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - lib/assets/images/boat.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

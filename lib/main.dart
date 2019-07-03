@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sailing_app/screens/boat_search.dart';
 import 'screens/help_page.dart';
 import 'models/competitor.dart';
+import 'app.dart';
 
 void main() => runApp(MyApp());
 
 // starting point of app
-class MyApp extends StatelessWidget{
+class SearchApp extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return MaterialApp(

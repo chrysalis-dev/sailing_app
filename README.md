@@ -1,6 +1,6 @@
 # sailing_app
 
-A new Flutter application.
+App that solves problems of running sailing events
 
 ## Getting Started
 
