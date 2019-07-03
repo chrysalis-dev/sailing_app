@@ -16,7 +16,8 @@ class RaceList extends StatelessWidget {
       itemCount: competition.races.length,
       itemBuilder: (context, index) {
         return RaceItem(
-          race: competition.races[index],
+          competition: competition,
+          index: index,
         );
       },
     );

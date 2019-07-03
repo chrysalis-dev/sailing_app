@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sailing_app/models/Race.dart';
+import 'package:sailing_app/models/Competition.dart';
 
 class RaceItem extends StatelessWidget {
-  final Race race;
+  final int index;
+  final Competition competition;
 
-  const RaceItem({Key key, this.race}) : super(key: key);
+  RaceItem({Key key, this.index, this.competition}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +14,13 @@ class RaceItem extends StatelessWidget {
       child: Card(
         child: Container(
           child: ListTile(
-            title: Text(race.raceID),
+            title: Text(competition.races[index].raceID.toString()),
           ),
         ),
       ),
+      onDismissed: (context) {
+        competition.races.remove(competition.races[index]);
+      },
     );
   }
 }
