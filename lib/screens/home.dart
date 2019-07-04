@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sailing_app/data/data.dart';
-import 'package:sailing_app/models/Competition.dart';
+import 'package:sailing_app/models/competition.dart';
 import 'package:sailing_app/screens/comp_dialog.dart';
 import 'package:sailing_app/widgets/albert_temp_folder/competition_list.dart';
 

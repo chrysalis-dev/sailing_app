@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sailing_app/models/Competition.dart';
+import 'package:sailing_app/models/competition.dart';
 
 import 'competition_item.dart';
 

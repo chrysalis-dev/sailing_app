@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sailing_app/models/Competition.dart';
-import 'package:sailing_app/models/Race.dart';
+import 'package:sailing_app/models/competition.dart';
+import 'package:sailing_app/models/race.dart';
 import 'package:sailing_app/widgets/albert_temp_folder/dti.dart';
 import 'package:sailing_app/widgets/albert_temp_folder/race_list.dart';
 

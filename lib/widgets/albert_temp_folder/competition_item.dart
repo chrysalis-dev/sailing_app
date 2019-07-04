@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sailing_app/data/data.dart';
-import 'package:sailing_app/models/Competition.dart';
+import 'package:sailing_app/models/competition.dart';
 import 'package:sailing_app/screens/competition_screen.dart';
 
 class CompetitionItem extends StatelessWidget {
