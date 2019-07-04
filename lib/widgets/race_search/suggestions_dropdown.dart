@@ -29,20 +29,20 @@ class _SuggState extends State<SuggestionsDropdown> {
     // on bracket inputs this crashes because RegExp can't parse - wrapped in TRY
     try {
       // set the relevant RegExp based on the type of search we want to do
-      switch (widget.parent.getSearchType()) {
+      switch (widget.parent.searchType) {
         case "start":
           {
-            pattern = RegExp('^' + widget.parent.getInputString());
+            pattern = RegExp('^' + widget.parent.inputString);
           }
           break;
         case "contains":
           {
-            pattern = RegExp(widget.parent.getInputString());
+            pattern = RegExp(widget.parent.inputString);
           }
           break;
         case "end":
           {
-            pattern = RegExp(widget.parent.getInputString() + r'$');
+            pattern = RegExp(widget.parent.inputString + r'$');
           }
           break;
       }
@@ -131,7 +131,7 @@ class _SuggState extends State<SuggestionsDropdown> {
                       maxHeight: 50, maxWidth: 50, minHeight: 50, minWidth: 50),
                   onPressed: () {
                     c.registerLap(DateTime.now());
-                    c.hasFinished();
+                    c.finished;
                     setState(() {});
                   },
                   child: Text("END"),
@@ -188,9 +188,9 @@ class _SuggState extends State<SuggestionsDropdown> {
     if (suggCompetitors != null) {
       suggCompetitors.sort();
       for (Competitor c in suggCompetitors) {
-        if (!widget.parent.checkFinalLap()) {
+        if (!widget.parent.finalLap) {
           suggWidgets.add(normalCard(c));
-        } else if (c.checkFinished()) {
+        } else if (c.finished) {
           suggWidgets.add(finishedCard(c));
         } else {
           suggWidgets.add(finalCard(c));

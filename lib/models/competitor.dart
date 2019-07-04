@@ -8,39 +8,41 @@ import 'race_result.dart';
 import 'boat.dart';
 import 'package:flutter/foundation.dart';
 
-class Competitor implements Comparable<Competitor>{
+class Competitor implements Comparable<Competitor> {
   Boat boat;
   RaceResult results;
   DateTime startTime;
-  bool finished = false;
+  bool done = false;
 
-  Competitor({@required this.boat, @required this.results, @required this.startTime}) { results.laps = 0; }
+  Competitor(
+      {@required this.boat, @required this.results, @required this.startTime}) {
+    results.laps = 0;
+  }
 
   void registerLap(DateTime lapTime) {
     results.laps++;
     // elapsed time is in milliseconds
-    results.elapsedTime = (lapTime.millisecondsSinceEpoch) - (startTime.millisecondsSinceEpoch);
+    results.elapsedTime =
+        (lapTime.millisecondsSinceEpoch) - (startTime.millisecondsSinceEpoch);
   }
 
-  bool checkFinished() { return finished; }
-  void hasFinished() { finished = true; }
+  get finished => done;
+  set finished(bool b) {
+    done = b;
+  }
 
   @override
   int compareTo(Competitor other) {
-    if (this.checkFinished() && !other.checkFinished()) {
+    if (this.finished && !other.finished) {
       return 1;
-    }
-    else if (!this.checkFinished() && other.checkFinished()) {
+    } else if (!this.finished && other.finished) {
       return -1;
-    }
-    else {
+    } else {
       if (this.results.laps > other.results.laps) {
         return 1;
-      }
-      else if (this.results.laps < other.results.laps) {
+      } else if (this.results.laps < other.results.laps) {
         return -1;
-      }
-      else {
+      } else {
         if (other.boat.boatID == this.boat.boatID)
           return 0;
         else if (other.boat.boatID > this.boat.boatID)

@@ -5,38 +5,34 @@ import '../widgets/race_search/search_type_buttons.dart';
 import '../widgets/race_search/search_bar.dart';
 import '../widgets/albert_temp_folder/processing_alert.dart';
 
-String searchType = ""; // current search mode (contains/start/end)
-String inputString = ""; // string to hold and read input value from
-bool finalLap = false;
+// string determining the type of search we use. has setter + getter
+String typeOfSearch; // current search mode (contains/start/end)
+
+// string holding the user's typed input. has setter + getter
+String userInput; // string to hold and read input value from
+
+// boolean telling us whether we're on the last lap yet. has setter + getter
+bool isFinalLap;
 
 // the main Widget in this view is stateful
 class SearchBarWithSuggestions extends StatefulWidget {
   final List<Competitor> competitors; //immutable: list of competitors
   static final routeName = 'searchPage';
 
-  // setters and getters for input string, search type and button statuses:
-  String getSearchType() {
-    return searchType;
-  }
-
-  void setSearchType(String s) {
+  // setters and getters for variables
+  get searchType => typeOfSearch;
+  set searchType(String s) {
     searchType = s;
   }
 
-  String getInputString() {
-    return inputString;
+  get inputString => userInput;
+  set inputString(String s) {
+    userInput = s;
   }
 
-  void setInputString(String s) {
-    inputString = s;
-  }
-
-  bool checkFinalLap() {
-    return finalLap;
-  }
-
-  void setFinalLap(bool l) {
-    finalLap = l;
+  get finalLap => isFinalLap;
+  set finalLap(bool b) {
+    isFinalLap = b;
   }
 
   // constructor: takes screen arguments: start time and competitors
@@ -55,7 +51,10 @@ class _SearchState extends State<SearchBarWithSuggestions> {
   // initState() sets default search type to middle
   @override
   void initState() {
-    widget.setSearchType("contains");
+    userInput = "";
+    typeOfSearch = "";
+    isFinalLap = false;
+    widget.searchType = "contains";
     super.initState();
   }
 

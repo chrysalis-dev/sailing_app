@@ -27,9 +27,13 @@ class _CompDialogState extends State<CompDialog> {
             onPressed: () {
               if (_hasName) {
                 Navigator.pop(
-                    context,
-                    new Competition(
-                        _competitionName, _fromDateTime, _toDateTime));
+                  context,
+                  new Competition(
+                    _competitionName,
+                    _fromDateTime,
+                    _toDateTime,
+                  ),
+                );
               } else {
                 Navigator.pop(context);
               }

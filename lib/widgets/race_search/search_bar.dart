@@ -28,7 +28,7 @@ class _SearchBarState extends State<SearchBar> {
   @override
   void initState() {
     inputController.addListener(() {
-      widget.parent.setInputString(inputController.text);
+      widget.parent.inputString = inputController.text;
       widget.updateParent();
     });
     super.initState();

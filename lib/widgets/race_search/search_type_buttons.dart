@@ -36,13 +36,13 @@ class _SearchTypeState extends State<SearchTypeButtons> {
 
     switch (mode) {
       case 0:
-        widget.parent.setSearchType("contains");
+        widget.parent.searchType = "contains";
         break;
       case 1:
-        widget.parent.setSearchType("start");
+        widget.parent.searchType = "start";
         break;
       case 2:
-        widget.parent.setSearchType("end");
+        widget.parent.searchType = "end";
         break;
     }
 
@@ -74,9 +74,9 @@ class _SearchTypeState extends State<SearchTypeButtons> {
         Text(""),
         RaisedButton(
           child: Text("FINAL LAP"),
-          color: (widget.parent.checkFinalLap()) ? Colors.blue : null,
+          color: (widget.parent.finalLap) ? Colors.blue : null,
           onPressed: () {
-            widget.parent.setFinalLap(true);
+            widget.parent.finalLap = true;
             widget.updateParent();
           },
         )
