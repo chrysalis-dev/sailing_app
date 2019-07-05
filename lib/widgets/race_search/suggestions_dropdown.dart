@@ -7,9 +7,10 @@ class SuggestionsDropdown extends StatefulWidget {
   // immutable values - parent widget and callback list of competitors
   final SearchBarWithSuggestions parent;
   final List<Competitor> competitors;
+  final DateTime startTime;
 
   // the constructor takes the parent widget, list of competitors and start time
-  SuggestionsDropdown(this.parent, this.competitors);
+  SuggestionsDropdown(this.parent, this.competitors, this.startTime);
 
   _SuggState createState() => _SuggState();
 }
@@ -88,7 +89,9 @@ class _SuggState extends State<SuggestionsDropdown> {
                   constraints: BoxConstraints(
                       maxHeight: 50, maxWidth: 50, minHeight: 50, minWidth: 50),
                   onPressed: () {
-                    c.registerLap(DateTime.now());
+                    c.results.elapsedTime =
+                        (DateTime.now().millisecondsSinceEpoch -
+                            widget.startTime.millisecondsSinceEpoch);
                     setState(() {});
                   },
                   child: Text("LAP " + (c.results.laps + 1).toString()),
@@ -130,7 +133,9 @@ class _SuggState extends State<SuggestionsDropdown> {
                   constraints: BoxConstraints(
                       maxHeight: 50, maxWidth: 50, minHeight: 50, minWidth: 50),
                   onPressed: () {
-                    c.registerLap(DateTime.now());
+                    c.results.elapsedTime =
+                        (DateTime.now().millisecondsSinceEpoch -
+                            widget.startTime.millisecondsSinceEpoch);
                     c.finished;
                     setState(() {});
                   },

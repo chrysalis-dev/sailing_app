@@ -18,6 +18,7 @@ bool isFinalLap;
 class SearchBarWithSuggestions extends StatefulWidget {
   final List<Competitor> competitors; //immutable: list of competitors
   static final routeName = 'searchPage';
+  final DateTime startTime;
 
   // setters and getters for variables
   get searchType => typeOfSearch;
@@ -36,7 +37,7 @@ class SearchBarWithSuggestions extends StatefulWidget {
   }
 
   // constructor: takes screen arguments: start time and competitors
-  SearchBarWithSuggestions(this.competitors);
+  SearchBarWithSuggestions(this.competitors) : startTime = DateTime.now();
 
   _SearchState createState() => _SearchState();
 }
@@ -102,7 +103,7 @@ class _SearchState extends State<SearchBarWithSuggestions> {
               widget,
               updateParent: refresh,
             ),
-            SuggestionsDropdown(widget, widget.competitors),
+            SuggestionsDropdown(widget, widget.competitors, widget.startTime),
           ],
         ),
       ),
