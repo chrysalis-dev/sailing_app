@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sailing_app/screens/boat_search.dart';
 import 'screens/help_page.dart';
 import 'models/competitor.dart';
-import 'routes/routes.dart';
 
 // starting point of app
 class SearchApp extends StatelessWidget {
@@ -13,7 +12,7 @@ class SearchApp extends StatelessWidget {
       title: "textbox using inbuilt keyboard",
       // Scaffold lets us use AppBar at top, floating buttons and bottom bar
       home: HelpPage(true),
-      routes: Routes.routes,
+      routes: null,
       onGenerateRoute: (RouteSettings settings) {
         if (settings.name == SearchBarWithSuggestions.routeName) {
           final List<Competitor> args = settings.arguments;

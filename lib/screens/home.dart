@@ -5,6 +5,7 @@ import 'package:sailing_app/screens/comp_dialog.dart';
 import 'package:sailing_app/widgets/albert_temp_folder/competition_list.dart';
 
 class MyHomePage extends StatefulWidget {
+  static const routeName = '/';
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
@@ -32,10 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future _fml(BuildContext context) async {
-    final result = await Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => CompDialog(), fullscreenDialog: true));
+    final result = await Navigator.of(context).pushNamed(CompDialog.routeName);
     setState(() {
       if (result is Competition) {
         Competitions.competitions.add(result);

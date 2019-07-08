@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sailing_app/screens/home.dart';
-import 'routes/routes.dart';
+import 'package:sailing_app/routes/route_generator.dart';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -9,8 +8,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Smooth Sailing',
       theme: ThemeData(primarySwatch: Colors.blue, brightness: Brightness.dark),
-      home: MyHomePage(title: 'Smooth Sailing'),
-      routes: Routes.routes,
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }

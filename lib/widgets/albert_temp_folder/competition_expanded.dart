@@ -5,6 +5,7 @@ import 'package:sailing_app/widgets/albert_temp_folder/dti.dart';
 import 'package:sailing_app/widgets/albert_temp_folder/race_list.dart';
 
 class CompIt extends StatefulWidget {
+  static const routeName = '/compit';
   final Competition competition;
 
   CompIt({Key key, @required this.competition}) : super(key: key);

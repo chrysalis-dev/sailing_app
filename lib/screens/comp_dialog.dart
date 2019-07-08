@@ -3,6 +3,7 @@ import 'package:sailing_app/models/competition.dart';
 import 'package:sailing_app/widgets/albert_temp_folder/dti.dart';
 
 class CompDialog extends StatefulWidget {
+  static const routeName = '/compdialog';
   @override
   _CompDialogState createState() => _CompDialogState();
 }
