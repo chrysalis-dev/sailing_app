@@ -6,7 +6,10 @@ import 'package:sailing_app/widgets/albert_temp_folder/competition_list.dart';
 
 class MyHomePage extends StatefulWidget {
   static const routeName = '/';
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({
+    Key key,
+    @required this.title,
+  }) : super(key: key);
 
   final String title;
 
@@ -21,10 +24,12 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: CompetitionList(competitions: Competitions.competitions),
+      body: CompetitionList(
+        competitions: Competitions.competitions,
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          _fml(context);
+          getDataFromDialog(context);
         },
         tooltip: 'Add Competition',
         child: Icon(Icons.add),
@@ -32,11 +37,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Future _fml(BuildContext context) async {
-    final result = await Navigator.of(context).pushNamed(CompDialog.routeName);
+  Future getDataFromDialog(BuildContext context) async {
+    final data = await Navigator.of(context).pushNamed(CompDialog.routeName);
     setState(() {
-      if (result is Competition) {
-        Competitions.competitions.add(result);
+      if (data is Competition) {
+        Competitions.competitions.add(data);
       }
     });
   }
