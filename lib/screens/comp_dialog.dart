@@ -30,9 +30,9 @@ class _CompDialogState extends State<CompDialog> {
                 Navigator.pop(
                   context,
                   new Competition(
-                    _competitionName,
-                    _fromDateTime,
-                    _toDateTime,
+                    name: _competitionName,
+                    startDate: _fromDateTime,
+                    endDate: _toDateTime,
                   ),
                 );
               } else {
