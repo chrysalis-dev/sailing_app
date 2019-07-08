@@ -23,7 +23,7 @@ class RouteGenerator {
         );
 
       // Navigate to a screen of an existing competition
-      case CompIt.routeName:
+      case CompetitionScreen.routeName:
         if (args is Competition) {
           return MaterialPageRoute(
             builder: (context) => CompetitionScreen(

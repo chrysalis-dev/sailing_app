@@ -3,7 +3,7 @@ import 'package:sailing_app/models/competition.dart';
 import 'package:sailing_app/widgets/albert_temp_folder/competition_expanded.dart';
 
 class CompetitionScreen extends StatefulWidget {
-  static const routeName = '/compit';
+  static const routeName = '/screen2';
   final Competition competition;
 
   CompetitionScreen({Key key, @required this.competition}) : super(key: key);
