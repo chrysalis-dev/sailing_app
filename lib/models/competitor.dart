@@ -17,10 +17,8 @@ class Competitor implements Comparable<Competitor> {
     results.laps = 0;
   }
 
-  get finished => done;
-  set finished(bool b) {
-    done = b;
-  }
+  bool get finished => done;
+  set finished(bool b) => done = b;
 
   @override
   int compareTo(Competitor other) {

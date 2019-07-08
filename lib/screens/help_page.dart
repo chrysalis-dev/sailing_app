@@ -98,7 +98,6 @@ class HelpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Competitor> c = [];
-    DateTime now = DateTime.now();
     var random = new Random();
     for (var i = 0; i < 200; i++) {
       // build 200 random boats for now

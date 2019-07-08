@@ -32,19 +32,13 @@ class _SuggState extends State<SuggestionsDropdown> {
       // set the relevant RegExp based on the type of search we want to do
       switch (widget.parent.searchType) {
         case "start":
-          {
-            pattern = RegExp('^' + widget.parent.inputString);
-          }
+          pattern = RegExp('^' + widget.parent.inputString);
           break;
         case "contains":
-          {
-            pattern = RegExp(widget.parent.inputString);
-          }
+          pattern = RegExp(widget.parent.inputString);
           break;
         case "end":
-          {
-            pattern = RegExp(widget.parent.inputString + r'$');
-          }
+          pattern = RegExp(widget.parent.inputString + r'$');
           break;
       }
 
@@ -207,7 +201,7 @@ class _SuggState extends State<SuggestionsDropdown> {
   // build method determines widget's GUI representation
   @override
   Widget build(BuildContext context) {
-    debugPrint("just drew suggestions drawer");
+    debugPrint("drawing suggestions...");
     updateSuggestions();
     drawSuggestions();
 

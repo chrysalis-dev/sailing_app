@@ -37,6 +37,7 @@ class _SearchBarState extends State<SearchBar> {
   // method for building the widget itself in GUI
   @override
   Widget build(BuildContext context) {
+    debugPrint("drawing search bar...");
     return Container(
         // all wrapped in a container for size control ability
         padding: const EdgeInsets.only(
