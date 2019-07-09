@@ -86,7 +86,6 @@ class _SuggState extends State<SuggestionsDropdown> {
                     c.results.elapsedTime =
                         (DateTime.now().millisecondsSinceEpoch -
                             widget.startTime.millisecondsSinceEpoch);
-                    c.results.laps++;
                     setState(() {});
                   },
                   child: Text("LAP " + (c.results.laps + 1).toString()),
@@ -131,8 +130,7 @@ class _SuggState extends State<SuggestionsDropdown> {
                     c.results.elapsedTime =
                         (DateTime.now().millisecondsSinceEpoch -
                             widget.startTime.millisecondsSinceEpoch);
-                    c.results.laps++;
-                    c.finished = true;
+                    c.finished;
                     setState(() {});
                   },
                   child: Text("END"),

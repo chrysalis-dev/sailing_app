@@ -97,9 +97,6 @@ class _SearchState extends State<SearchPage> {
               widget,
               updateParent: refresh,
             ),
-            Padding(
-              padding: EdgeInsets.only(bottom: 10),
-            ),
             SuggestionsDropdown(widget, widget.competitors, widget.startTime),
           ],
         ),

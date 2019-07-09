@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sailing_app/data/data.dart';
 import 'package:sailing_app/models/competition.dart';
 import 'package:sailing_app/models/competitor.dart';
 import 'package:sailing_app/screens/boat_search.dart';
@@ -6,6 +7,7 @@ import 'package:sailing_app/screens/comp_dialog.dart';
 import 'package:sailing_app/screens/competition_screen.dart';
 import 'package:sailing_app/screens/help_page.dart';
 import 'package:sailing_app/screens/home.dart';
+import 'package:sailing_app/screens/start_race_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -54,6 +56,13 @@ class RouteGenerator {
       case HelpPage.routeName:
         return MaterialPageRoute(
           builder: (context) => HelpPage(),
+        );
+
+      case StartRacePage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => StartRacePage(
+                thisRace: settings.arguments,
+              ),
         );
 
       // By default, it redirects to an error screen
