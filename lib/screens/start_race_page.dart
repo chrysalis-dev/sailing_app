@@ -9,8 +9,13 @@ import '../widgets/help_page/racing_suggestion_example.dart';
 import '../widgets/help_page/finished_suggestion_example.dart';
 import '../widgets/help_page/search_bar_example.dart';
 
-class HelpPage extends StatelessWidget {
-  static const routeName = 'screen4';
+class StartRacePage extends StatelessWidget {
+  static const routeName = 'screen5';
+  final thisRace;
+
+  StartRacePage({
+    @required this.thisRace,
+  });
 
   List<Widget> basicSkeleton() {
     return [
@@ -59,14 +64,18 @@ class HelpPage extends StatelessWidget {
     ];
   }
 
-  List<Widget> continueButton(BuildContext context) {
+  List<Widget> startButton(BuildContext context, List<Competitor> c) {
     return [
-      Text("Click below to continue the race"),
+      Text("Click below to start the race!"),
       RaisedButton(
         color: Colors.green[400],
-        child: Text("Continue Race"),
+        child: Text("Start Race"),
         onPressed: () {
-          Navigator.of(context).pop();
+          Navigator.of(context).pushNamedAndRemoveUntil(
+            SearchPage.routeName,
+            ModalRoute.withName("/Home"),
+            arguments: c,
+          );
         },
       )
     ];
@@ -86,12 +95,12 @@ class HelpPage extends StatelessWidget {
     }
     return new Scaffold(
         appBar: AppBar(
-          title: Text("Smooth Sailing Help"),
+          title: Text("Smooth Sailing"),
         ),
         body: Container(
             padding: EdgeInsets.all(20),
             child: ListView(
                 children: List.from(basicSkeleton())
-                  ..addAll(continueButton(context)))));
+                  ..addAll(startButton(context, c)))));
   }
 }

@@ -4,7 +4,7 @@ import '../../screens/boat_search.dart';
 // SearchTypeButtons class is stateful
 class SearchTypeButtons extends StatefulWidget {
   // immutable: parent widget and callback function
-  final SearchBarWithSuggestions parent;
+  final SearchPage parent;
   final Function updateParent;
 
   // constructor takes values for parent and updateParent

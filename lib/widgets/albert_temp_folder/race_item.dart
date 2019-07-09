@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sailing_app/models/competition.dart';
-import '../../screens/help_page.dart';
+import 'package:sailing_app/screens/start_race_page.dart';
 
 class RaceItem extends StatelessWidget {
   final int index;
@@ -16,13 +16,10 @@ class RaceItem extends StatelessWidget {
         child: Container(
           child: ListTile(
             onTap: () {
-              Navigator.push(
+              Navigator.pushNamed(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => HelpPage(
-                          true,
-                          competition.races[index],
-                        )),
+                StartRacePage.routeName,
+                arguments: competition.races[index],
               );
             },
             title: Text(competition.races[index].raceID.toString()),

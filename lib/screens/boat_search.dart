@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sailing_app/screens/help_page.dart';
 import '../models/competitor.dart';
 import 'package:sailing_app/widgets/race_search/suggestions_dropdown.dart';
 import '../widgets/race_search/search_type_buttons.dart';
@@ -15,9 +16,9 @@ String userInput; // string to hold and read input value from
 bool isFinalLap;
 
 // the main Widget in this view is stateful
-class SearchBarWithSuggestions extends StatefulWidget {
+class SearchPage extends StatefulWidget {
+  static const routeName = 'screen3';
   final List<Competitor> competitors; //immutable: list of competitors
-  static final routeName = 'searchPage';
   final DateTime startTime;
 
   // setters and getters for variables
@@ -31,13 +32,13 @@ class SearchBarWithSuggestions extends StatefulWidget {
   set finalLap(bool b) => isFinalLap = b;
 
   // constructor: takes screen arguments: start time and competitors
-  SearchBarWithSuggestions(this.competitors) : startTime = DateTime.now();
+  SearchPage(this.competitors) : startTime = DateTime.now();
 
   _SearchState createState() => _SearchState();
 }
 
-// state class for SearchBarWithSuggestions
-class _SearchState extends State<SearchBarWithSuggestions> {
+// state class for SearchPage
+class _SearchState extends State<SearchPage> {
   // method which children can call to force setState in the parent
   void refresh() {
     setState(() {});
@@ -67,7 +68,7 @@ class _SearchState extends State<SearchBarWithSuggestions> {
                 style: TextStyle(color: Colors.white),
               ),
               onPressed: () {
-                Navigator.of(context).pushNamed('helpPage');
+                Navigator.of(context).pushNamed(HelpPage.routeName);
               }, // onPressed
             ),
             Container(
