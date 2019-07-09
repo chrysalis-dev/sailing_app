@@ -4,7 +4,7 @@ import '../../screens/boat_search.dart';
 // SearchBar stateful class
 class SearchBar extends StatefulWidget {
   // immutable: parent widget and callback function
-  final SearchPage parent;
+  final SearchBarWithSuggestions parent;
   final Function updateParent;
 
   // constructor stores values for parent and updateParent
