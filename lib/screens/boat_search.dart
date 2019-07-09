@@ -18,25 +18,20 @@ bool isFinalLap;
 class SearchBarWithSuggestions extends StatefulWidget {
   final List<Competitor> competitors; //immutable: list of competitors
   static final routeName = 'searchPage';
+  final DateTime startTime;
 
   // setters and getters for variables
-  get searchType => typeOfSearch;
-  set searchType(String s) {
-    searchType = s;
-  }
+  String get searchType => typeOfSearch;
+  set searchType(String s) => typeOfSearch = s;
 
-  get inputString => userInput;
-  set inputString(String s) {
-    userInput = s;
-  }
+  String get inputString => userInput;
+  set inputString(String s) => userInput = s;
 
-  get finalLap => isFinalLap;
-  set finalLap(bool b) {
-    isFinalLap = b;
-  }
+  bool get finalLap => isFinalLap;
+  set finalLap(bool b) => isFinalLap = b;
 
   // constructor: takes screen arguments: start time and competitors
-  SearchBarWithSuggestions(this.competitors);
+  SearchBarWithSuggestions(this.competitors) : startTime = DateTime.now();
 
   _SearchState createState() => _SearchState();
 }
@@ -52,9 +47,8 @@ class _SearchState extends State<SearchBarWithSuggestions> {
   @override
   void initState() {
     userInput = "";
-    typeOfSearch = "";
+    typeOfSearch = "contains";
     isFinalLap = false;
-    widget.searchType = "contains";
     super.initState();
   }
 
@@ -90,7 +84,7 @@ class _SearchState extends State<SearchBarWithSuggestions> {
                           content: ProcessingAlert(),
                         ),
                   );
-                }, // onPressed
+                }, // onPressedwidget.
               ),
             ),
           ],
@@ -102,7 +96,7 @@ class _SearchState extends State<SearchBarWithSuggestions> {
               widget,
               updateParent: refresh,
             ),
-            SuggestionsDropdown(widget, widget.competitors),
+            SuggestionsDropdown(widget, widget.competitors, widget.startTime),
           ],
         ),
       ),

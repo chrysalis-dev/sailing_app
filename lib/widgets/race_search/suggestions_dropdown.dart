@@ -7,9 +7,10 @@ class SuggestionsDropdown extends StatefulWidget {
   // immutable values - parent widget and callback list of competitors
   final SearchBarWithSuggestions parent;
   final List<Competitor> competitors;
+  final DateTime startTime;
 
   // the constructor takes the parent widget, list of competitors and start time
-  SuggestionsDropdown(this.parent, this.competitors);
+  SuggestionsDropdown(this.parent, this.competitors, this.startTime);
 
   _SuggState createState() => _SuggState();
 }
@@ -31,19 +32,13 @@ class _SuggState extends State<SuggestionsDropdown> {
       // set the relevant RegExp based on the type of search we want to do
       switch (widget.parent.searchType) {
         case "start":
-          {
-            pattern = RegExp('^' + widget.parent.inputString);
-          }
+          pattern = RegExp('^' + widget.parent.inputString);
           break;
         case "contains":
-          {
-            pattern = RegExp(widget.parent.inputString);
-          }
+          pattern = RegExp(widget.parent.inputString);
           break;
         case "end":
-          {
-            pattern = RegExp(widget.parent.inputString + r'$');
-          }
+          pattern = RegExp(widget.parent.inputString + r'$');
           break;
       }
 
@@ -88,7 +83,9 @@ class _SuggState extends State<SuggestionsDropdown> {
                   constraints: BoxConstraints(
                       maxHeight: 50, maxWidth: 50, minHeight: 50, minWidth: 50),
                   onPressed: () {
-                    c.registerLap(DateTime.now());
+                    c.results.elapsedTime =
+                        (DateTime.now().millisecondsSinceEpoch -
+                            widget.startTime.millisecondsSinceEpoch);
                     setState(() {});
                   },
                   child: Text("LAP " + (c.results.laps + 1).toString()),
@@ -130,7 +127,9 @@ class _SuggState extends State<SuggestionsDropdown> {
                   constraints: BoxConstraints(
                       maxHeight: 50, maxWidth: 50, minHeight: 50, minWidth: 50),
                   onPressed: () {
-                    c.registerLap(DateTime.now());
+                    c.results.elapsedTime =
+                        (DateTime.now().millisecondsSinceEpoch -
+                            widget.startTime.millisecondsSinceEpoch);
                     c.finished;
                     setState(() {});
                   },
@@ -202,7 +201,7 @@ class _SuggState extends State<SuggestionsDropdown> {
   // build method determines widget's GUI representation
   @override
   Widget build(BuildContext context) {
-    debugPrint("just drew suggestions drawer");
+    debugPrint("drawing suggestions...");
     updateSuggestions();
     drawSuggestions();
 

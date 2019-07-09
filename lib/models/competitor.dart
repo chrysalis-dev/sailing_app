@@ -11,25 +11,14 @@ import 'package:flutter/foundation.dart';
 class Competitor implements Comparable<Competitor> {
   Boat boat;
   RaceResult results;
-  DateTime startTime;
   bool done = false;
 
-  Competitor(
-      {@required this.boat, @required this.results, @required this.startTime}) {
+  Competitor({@required this.boat, @required this.results}) {
     results.laps = 0;
   }
 
-  void registerLap(DateTime lapTime) {
-    results.laps++;
-    // elapsed time is in milliseconds
-    results.elapsedTime =
-        (lapTime.millisecondsSinceEpoch) - (startTime.millisecondsSinceEpoch);
-  }
-
-  get finished => done;
-  set finished(bool b) {
-    done = b;
-  }
+  bool get finished => done;
+  set finished(bool b) => done = b;
 
   @override
   int compareTo(Competitor other) {

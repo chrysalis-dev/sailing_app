@@ -18,7 +18,11 @@ class RaceItem extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HelpPage(true)),
+                MaterialPageRoute(
+                    builder: (context) => HelpPage(
+                          true,
+                          competition.races[index],
+                        )),
               );
             },
             title: Text(competition.races[index].raceID.toString()),

@@ -11,8 +11,9 @@ import '../widgets/help_page/search_bar_example.dart';
 
 class HelpPage extends StatelessWidget {
   final bool isStart;
+  final thisRace;
 
-  HelpPage(this.isStart);
+  HelpPage(this.isStart, this.thisRace);
 
   List<Widget> basicSkeleton() {
     return [
@@ -97,15 +98,14 @@ class HelpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Competitor> c = [];
-    DateTime now = DateTime.now();
     var random = new Random();
     for (var i = 0; i < 200; i++) {
       // build 200 random boats for now
       var n = random.nextInt(100000);
       c.add(Competitor(
-          boat: Boat(n, "", "", 0, ""),
-          results: RaceResult(n, 0, 0, 0, 0, 0, ""),
-          startTime: now));
+        boat: Boat(n, "", "", 0, ""),
+        results: RaceResult(n, 0, 0, 0, 0, 0, ""),
+      ));
     }
     return new Scaffold(
         appBar: AppBar(

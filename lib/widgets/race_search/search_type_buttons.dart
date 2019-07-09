@@ -36,13 +36,21 @@ class _SearchTypeState extends State<SearchTypeButtons> {
 
     switch (mode) {
       case 0:
-        widget.parent.searchType = "contains";
+        {
+          widget.parent.searchType = "contains";
+        }
         break;
+
       case 1:
-        widget.parent.searchType = "start";
+        {
+          widget.parent.searchType = "start";
+        }
         break;
+
       case 2:
-        widget.parent.searchType = "end";
+        {
+          widget.parent.searchType = "end";
+        }
         break;
     }
 
@@ -87,6 +95,7 @@ class _SearchTypeState extends State<SearchTypeButtons> {
   // build method defines how widget is represented in GUI
   @override
   Widget build(BuildContext context) {
+    debugPrint("drawing buttons...");
     return Container(
         // wrap in container for sizing purposes
         padding: EdgeInsets.all(0),
