@@ -72,7 +72,7 @@ class StartRacePage extends StatelessWidget {
         child: Text("Start Race"),
         onPressed: () {
           Navigator.of(context).pushNamedAndRemoveUntil(
-            SearchPage.routeName,
+            SearchBarWithSuggestions.routeName,
             ModalRoute.withName("/Home"),
             arguments: c,
           );

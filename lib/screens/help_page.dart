@@ -10,21 +10,26 @@ import '../widgets/help_page/finished_suggestion_example.dart';
 import '../widgets/help_page/search_bar_example.dart';
 
 class HelpPage extends StatelessWidget {
-  static const routeName = 'screen4';
+  final bool isStart;
+  final thisRace;
+
+  HelpPage(this.isStart, this.thisRace);
 
   List<Widget> basicSkeleton() {
     return [
-      Card(
-          child: Padding(
-        padding: EdgeInsets.all(10),
-        child: Text(
-          "The race is about to begin! Read through this page to see "
-          "how you should use this app. All of these examples can be clicked "
-          "on to see more information. When you're ready to begin the race, "
-          "press the \"Start Race\" button at the bottom of the page.",
-          style: TextStyle(fontSize: 16),
-        ),
-      )),
+      isStart
+          ? Card(
+              child: Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                "The race is about to begin! Read through this page to see "
+                "how you should use this app. All of these examples can be clicked "
+                "on to see more information. When you're ready to begin the race, "
+                "press the \"Start Race\" button at the bottom of the page.",
+                style: TextStyle(fontSize: 16),
+              ),
+            ))
+          : Text("This is the button bar used to control searching:"),
       Padding(
         padding: EdgeInsets.only(bottom: 10),
       ),
@@ -59,6 +64,24 @@ class HelpPage extends StatelessWidget {
     ];
   }
 
+  List<Widget> startButton(BuildContext context, List<Competitor> c) {
+    return [
+      Text("Click below to start the race!"),
+      RaisedButton(
+        color: Colors.green[400],
+        child: Text("Start Race"),
+        onPressed: () {
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => SearchBarWithSuggestions(c),
+            ),
+            ModalRoute.withName("/Home"),
+          );
+        },
+      )
+    ];
+  }
+
   List<Widget> continueButton(BuildContext context) {
     return [
       Text("Click below to continue the race"),
@@ -86,12 +109,14 @@ class HelpPage extends StatelessWidget {
     }
     return new Scaffold(
         appBar: AppBar(
-          title: Text("Smooth Sailing Help"),
+          title: Text("Smooth Sailing" + ((isStart) ? "" : " Help")),
         ),
         body: Container(
             padding: EdgeInsets.all(20),
             child: ListView(
                 children: List.from(basicSkeleton())
-                  ..addAll(continueButton(context)))));
+                  ..addAll((isStart)
+                      ? startButton(context, c)
+                      : continueButton(context)))));
   }
 }

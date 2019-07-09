@@ -5,7 +5,7 @@ import 'package:sailing_app/screens/boat_search.dart';
 // SuggestionsDropdown class is stateful
 class SuggestionsDropdown extends StatefulWidget {
   // immutable values - parent widget and callback list of competitors
-  final SearchPage parent;
+  final SearchBarWithSuggestions parent;
   final List<Competitor> competitors;
   final DateTime startTime;
 
