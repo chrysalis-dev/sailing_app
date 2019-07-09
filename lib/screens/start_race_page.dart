@@ -10,7 +10,7 @@ import '../widgets/help_page/finished_suggestion_example.dart';
 import '../widgets/help_page/search_bar_example.dart';
 
 class StartRacePage extends StatelessWidget {
-  static const routeName = 'screen5';
+  static const routeName = 'route: start page';
   final thisRace;
 
   StartRacePage({

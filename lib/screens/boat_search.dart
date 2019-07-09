@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sailing_app/screens/help_page.dart';
 import '../models/competitor.dart';
 import 'package:sailing_app/widgets/race_search/suggestions_dropdown.dart';
 import '../widgets/race_search/search_type_buttons.dart';
@@ -16,8 +17,8 @@ bool isFinalLap;
 
 // the main Widget in this view is stateful
 class SearchBarWithSuggestions extends StatefulWidget {
+  static const routeName = 'route: search page';
   final List<Competitor> competitors; //immutable: list of competitors
-  static final routeName = 'searchPage';
   final DateTime startTime;
 
   // setters and getters for variables
@@ -67,7 +68,7 @@ class _SearchState extends State<SearchBarWithSuggestions> {
                 style: TextStyle(color: Colors.white),
               ),
               onPressed: () {
-                Navigator.of(context).pushNamed('helpPage');
+                Navigator.of(context).pushNamed(HelpPage.routeName);
               }, // onPressed
             ),
             Container(

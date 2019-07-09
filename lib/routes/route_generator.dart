@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:sailing_app/models/competition.dart';
+import 'package:sailing_app/models/competitor.dart';
+import 'package:sailing_app/models/race.dart';
+import 'package:sailing_app/screens/boat_search.dart';
 import 'package:sailing_app/screens/comp_dialog.dart';
 import 'package:sailing_app/screens/competition_screen.dart';
+import 'package:sailing_app/screens/help_page.dart';
 import 'package:sailing_app/screens/home.dart';
+import 'package:sailing_app/screens/start_race_page.dart';
 import 'package:sailing_app/widgets/albert_temp_folder/competition_expanded.dart';
 
 class RouteGenerator {
@@ -10,6 +15,8 @@ class RouteGenerator {
     // Arguments that are passed to the route on generation
 
     final args = settings.arguments;
+
+    debugPrint(settings.name);
 
     // Switch statement that redirects to routes depending on the name passed
     switch (settings.name) {
@@ -31,7 +38,8 @@ class RouteGenerator {
                 ),
           );
         }
-        return _errorRoute(); // Return error if no competition passed as an argument
+        return _errorRoute(
+            "Competition Screen"); // Return error if no competition passed as an argument
 
       // Navigate to the the new competition creation dialog screen
       case CompDialog.routeName:
@@ -39,14 +47,35 @@ class RouteGenerator {
           builder: (context) => CompDialog(),
         );
 
+      case HelpPage.routeName:
+        return MaterialPageRoute(
+          builder: (context) => HelpPage(),
+        );
+
+      case StartRacePage.routeName:
+        if (args is Race) {
+          return MaterialPageRoute(
+            builder: (context) => StartRacePage(thisRace: settings.arguments),
+          );
+        }
+        return _errorRoute("Start Page");
+
+      case SearchBarWithSuggestions.routeName:
+        if (args is List<Competitor>) {
+          return MaterialPageRoute(
+            builder: (context) => SearchBarWithSuggestions(settings.arguments),
+          );
+        }
+        return _errorRoute("Search Page");
+
       // By default, it redirects to an error screen
       default:
-        return _errorRoute();
+        return _errorRoute("default");
     }
   }
 
   // Error screen
-  static Route<dynamic> _errorRoute() {
+  static Route<dynamic> _errorRoute(String message) {
     return MaterialPageRoute(builder: (BuildContext context) {
       return Scaffold(
         appBar: AppBar(
@@ -54,6 +83,7 @@ class RouteGenerator {
             'Error',
           ),
         ),
+        body: Text(message),
       );
     });
   }

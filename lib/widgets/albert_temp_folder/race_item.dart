@@ -1,6 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:sailing_app/models/boat.dart';
 import 'package:sailing_app/models/competition.dart';
-import '../../screens/help_page.dart';
+import 'package:sailing_app/models/competitor.dart';
+import 'package:sailing_app/models/race_result.dart';
+import 'package:sailing_app/screens/boat_search.dart';
+import 'package:sailing_app/screens/start_race_page.dart';
 
 class RaceItem extends StatelessWidget {
   final int index;
@@ -16,13 +22,25 @@ class RaceItem extends StatelessWidget {
         child: Container(
           child: ListTile(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => HelpPage(
-                          true,
-                          competition.races[index],
-                        )),
+/*
+change this later once database is used. starting here...
+*/
+              List<Competitor> c = [];
+              var random = new Random();
+              for (var i = 0; i < 200; i++) {
+                // build 200 random boats for now
+                var n = random.nextInt(100000);
+                c.add(Competitor(
+                  boat: Boat(n, "", "", 0, ""),
+                  results: RaceResult(n, 0, 0, 0, 0, 0, ""),
+                ));
+              }
+/*
+... ending here
+*/
+              Navigator.of(context).pushNamed(
+                SearchBarWithSuggestions.routeName,
+                arguments: c,
               );
             },
             title: Text(competition.races[index].raceID.toString()),
