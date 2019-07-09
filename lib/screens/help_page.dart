@@ -13,7 +13,7 @@ class HelpPage extends StatelessWidget {
   final bool isStart;
   final thisRace;
 
-  HelpPage(this.isStart, this.thisRace);
+  HelpPage({this.isStart, this.thisRace});
 
   List<Widget> basicSkeleton() {
     return [

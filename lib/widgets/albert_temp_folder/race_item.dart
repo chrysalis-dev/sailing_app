@@ -20,8 +20,8 @@ class RaceItem extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => HelpPage(
-                          true,
-                          competition.races[index],
+                          isStart: true,
+                          thisRace: competition.races[index],
                         )),
               );
             },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sailing_app/screens/help_page.dart';
 import '../models/competitor.dart';
 import 'package:sailing_app/widgets/race_search/suggestions_dropdown.dart';
 import '../widgets/race_search/search_type_buttons.dart';
@@ -67,7 +68,10 @@ class _SearchState extends State<SearchBarWithSuggestions> {
                 style: TextStyle(color: Colors.white),
               ),
               onPressed: () {
-                Navigator.of(context).pushNamed('helpPage');
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => HelpPage(
+                          isStart: false,
+                        )));
               }, // onPressed
             ),
             Container(
@@ -95,6 +99,9 @@ class _SearchState extends State<SearchBarWithSuggestions> {
             SearchBar(
               widget,
               updateParent: refresh,
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 10),
             ),
             SuggestionsDropdown(widget, widget.competitors, widget.startTime),
           ],
