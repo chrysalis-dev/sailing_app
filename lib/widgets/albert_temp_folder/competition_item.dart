@@ -61,11 +61,12 @@ class CompetitionItem extends StatelessWidget {
           ),
         ),
         onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      CompetitionScreen(competition: competition)));
+          debugPrint('Pressed');
+          Navigator.pushNamed(
+            context,
+            CompetitionScreen.routeName,
+            arguments: competition,
+          );
         },
       ),
     );

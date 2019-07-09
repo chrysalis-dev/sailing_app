@@ -3,6 +3,7 @@ import 'package:sailing_app/models/competition.dart';
 import 'package:sailing_app/widgets/albert_temp_folder/dti.dart';
 
 class CompDialog extends StatefulWidget {
+  static const routeName = '/screen1';
   @override
   _CompDialogState createState() => _CompDialogState();
 }
@@ -29,9 +30,9 @@ class _CompDialogState extends State<CompDialog> {
                 Navigator.pop(
                   context,
                   new Competition(
-                    _competitionName,
-                    _fromDateTime,
-                    _toDateTime,
+                    name: _competitionName,
+                    startDate: _fromDateTime,
+                    endDate: _toDateTime,
                   ),
                 );
               } else {
@@ -50,7 +51,9 @@ class _CompDialogState extends State<CompDialog> {
             alignment: Alignment.bottomLeft,
             child: TextField(
               decoration: const InputDecoration(
-                  labelText: 'Competition name', filled: true),
+                labelText: 'Competition name',
+                filled: true,
+              ),
               style: theme.textTheme.headline,
               onChanged: (String value) {
                 setState(() {
