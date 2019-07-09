@@ -18,10 +18,7 @@ class HelpPage extends StatelessWidget {
           child: Padding(
         padding: EdgeInsets.all(10),
         child: Text(
-          "The race is about to begin! Read through this page to see "
-          "how you should use this app. All of these examples can be clicked "
-          "on to see more information. When you're ready to begin the race, "
-          "press the \"Start Race\" button at the bottom of the page.",
+          "Here you can see how to use the app UI. Click the green button at the bottom to go back to the race!",
           style: TextStyle(fontSize: 16),
         ),
       )),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sailing_app/models/competition.dart';
-import 'package:sailing_app/screens/start_race_page.dart';
+import 'package:sailing_app/screens/boat_search.dart';
 
 class RaceItem extends StatelessWidget {
   final int index;
@@ -18,7 +18,7 @@ class RaceItem extends StatelessWidget {
             onTap: () {
               Navigator.pushNamed(
                 context,
-                StartRacePage.routeName,
+                SearchPage.routeName,
                 arguments: competition.races[index],
               );
             },
