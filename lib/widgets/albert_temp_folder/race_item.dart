@@ -6,7 +6,6 @@ import 'package:sailing_app/models/competition.dart';
 import 'package:sailing_app/models/competitor.dart';
 import 'package:sailing_app/models/race_result.dart';
 import 'package:sailing_app/screens/boat_search.dart';
-import 'package:sailing_app/screens/start_race_page.dart';
 
 class RaceItem extends StatelessWidget {
   final int index;

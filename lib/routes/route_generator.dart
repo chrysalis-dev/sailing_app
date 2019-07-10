@@ -8,7 +8,6 @@ import 'package:sailing_app/screens/competition_screen.dart';
 import 'package:sailing_app/screens/help_page.dart';
 import 'package:sailing_app/screens/home.dart';
 import 'package:sailing_app/screens/start_race_page.dart';
-import 'package:sailing_app/widgets/albert_temp_folder/competition_expanded.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sailing_app/models/race.dart';
 import 'boat_search.dart';
 import '../models/competitor.dart';
 import 'dart:math';
